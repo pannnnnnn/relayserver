@@ -49,10 +49,6 @@ fi
 	echo "开启iptables转发模块..."
 	echo -e "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 	sysctl -p
-	echo "正在清空防火墙..."
-	iptables -t nat -F
-	echo "正在清空限速规则..."
-	iptables -t mangle -F
 	echo "正在初始化tc限速(无视报错即可)..."
 	tc qdisc del dev "$eth_name" root
 	echo "正在tc限速添加根节点..."
